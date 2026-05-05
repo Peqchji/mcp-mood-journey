@@ -78,9 +78,6 @@ mood-journey-mcp/
 │   └── db.py                  # Read/write local JSON file
 ├── data/
 │   └── moods.json             # Your mood data (auto-created, gitignored)
-├── tests/
-│   ├── test_log.py
-│   └── test_query.py
 ├── pyproject.toml             # Project metadata + dependencies (managed by uv)
 ├── uv.lock                    # Lockfile (commit this!)
 ├── .gitignore                 # moods.json is always ignored
@@ -214,9 +211,9 @@ uv run server.py
 - [x] Phase 1: Project setup & Hello World MCP tool
 - [x] Phase 2: `log_mood` + local JSON storage
 - [x] Phase 3: `get_today` + `get_mood_summary`
-- [ ] Phase 4: `find_patterns` — day/time/keyword analysis
-- [ ] Phase 5: Mood streaks & consistency tracking
-- [ ] Phase 6: `export_data` to CSV
+- [x] Phase 4: `find_patterns` — day/time/keyword analysis
+- [x] Phase 5: Mood streaks & consistency tracking
+- [x] Phase 6: `export_data` to CSV
 - [ ] Phase 7: Emotion tag suggestions (auto-complete common tags)
 - [ ] Phase 8: Weekly reflection prompt (Claude proactively summarizes)
 
