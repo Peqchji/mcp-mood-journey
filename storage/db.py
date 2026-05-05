@@ -3,8 +3,10 @@ import os
 from datetime import datetime
 from pathlib import Path
 
-DATA_DIR = Path("data")
+PROJECT_ROOT = Path(__file__).parent.parent.absolute()
+DATA_DIR = PROJECT_ROOT / "data"
 DB_FILE = DATA_DIR / "moods.json"
+
 
 def init_db():
     if not DATA_DIR.exists():
