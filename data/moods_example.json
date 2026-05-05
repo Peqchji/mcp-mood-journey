@@ -1,0 +1,12 @@
+{
+  "entries": [
+    {
+      "id": "20260418-001",
+      "timestamp": "2026-04-18T21:02:45.405481",
+      "score": 8,
+      "emotion": "happy",
+      "note": "Testing tool call",
+      "day_of_week": "Saturday"
+    }
+  ]
+}

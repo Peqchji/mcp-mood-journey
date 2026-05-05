@@ -50,6 +50,46 @@ def add_entry(score, emotion, note=None):
 
         return new_entry
     except Exception as e:
-        return Errors.INTERNAL_ERROR
+        return None
 
-    return new_entry
+def delete_entry_by_id(entry_id: str):
+    entries = load_entries()
+    original_count = len(entries)
+    entries = [e for e in entries if e["id"] != entry_id]
+
+    if len(entries) < original_count:
+        save_entries(entries)
+
+        return True
+
+    return False
+
+def get_entries_by_date(date_str: str):
+    """date_str in YYYY-MM-DD format"""
+    entries = load_entries()
+
+    return [e for e in entries if e["timestamp"].startswith(date_str)]
+
+def get_entries_by_range(start_date: str = None, end_date: str = None):
+    """dates in YYYY-MM-DD format"""
+    entries = load_entries()
+    filtered = entries
+    if start_date:
+        filtered = [e for e in filtered if e["timestamp"] >= start_date]
+    
+    if end_date:
+        # Append T23:59:59 to end_date to include the whole day
+        end_date_full = f"{end_date}T23:59:59"
+        filtered = [e for e in filtered if e["timestamp"] <= end_date_full]
+    
+    return filtered
+
+def search_entries_by_text(query: str):
+    entries = load_entries()
+    query = query.lower()
+    
+    return [
+        e for e in entries 
+        if query in (e.get("note") or "").lower() or query in e["emotion"].lower()
+    ]
+
